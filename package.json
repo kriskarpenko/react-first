@@ -1,11 +1,16 @@
 {
   "name": "react-first",
-  "version": "0.1.0",
+  "version": "0.1.2",
+  "description": "My first react app",
   "private": true,
   "author": {
     "name" : "Kristina Karpenko",
     "email" : "tefniamo@gmail.com",
     "url" : "https://tafee.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristinakarpenko/react-first.git"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

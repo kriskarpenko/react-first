@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Nav from "./components/Nav";
+import Body from "./Body";
+import Footer from "./Footer";
+import Timer from "./components/Timer/Timer";
+import CountDown from "./components/CountDown/CountDown";
+import Clicker from "./components/Clicker/Clicker";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello world
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Body className="App-Body"></Body>
+      <Timer />
+      <CountDown initialValue={3} />
+      <Clicker />
+      <Footer text="Kristina" />
     </div>
   );
 }
