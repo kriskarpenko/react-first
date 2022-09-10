@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import CountDownComplete from "./Complete";
 import CountDownDisplay from "./Display";
 import CountDownInput from "./Input";
 
 const CountDown = ({ initialValue = 1 }) => {
-  const [time, setTime] = useState(1);
-  const [length, setLength] = useState(initialValue);
+  const [timeRemaining, setTimeRemaining] = useState(1);
+  const [value, setValue] = useState(initialValue);
   const [running, setRunning] = useState(false);
   const [complete, setComplete] = useState(false);
 
@@ -14,7 +14,7 @@ const CountDown = ({ initialValue = 1 }) => {
       return;
     }
     let intervalHandler = setInterval(() => {
-      setTime((oldValue) => {
+      setTimeRemaining((oldValue) => {
         if (oldValue <= 1) {
           setRunning(false);
           setComplete(true);
@@ -29,35 +29,35 @@ const CountDown = ({ initialValue = 1 }) => {
     };
   }, [running]);
 
-  const onStart = () => {
-    setTime(length);
+  const onStart = useCallback(() => {
+    setTimeRemaining(value);
     setRunning(true);
     setComplete(false);
-  };
+  }, [value]);
 
-  const onStop = () => {
-    setTime(0);
+  const onStop = useCallback(() => {
+    setTimeRemaining(0);
     setRunning(false);
     setComplete(false);
-  };
+  }, []);
 
-  const onReset = () => {
+  const onReset = useCallback(() => {
     setComplete(false);
-  };
+  }, []);
 
-  function onInputChange(event) {
-    setLength(Number(event.target.value));
-  }
+  const onInputChange = useCallback((event) => {
+    setValue(Number(event.target.value));
+  }, []);
 
   return (
     <div>
       {complete ? (
         <CountDownComplete onButtonClick={onReset} />
       ) : running ? (
-        <CountDownDisplay value={time} onButtonClick={onStop} />
+        <CountDownDisplay value={timeRemaining} onButtonClick={onStop} />
       ) : (
         <CountDownInput
-          value={length}
+          value={value}
           onButtonClick={onStart}
           onValueChange={onInputChange}
         />

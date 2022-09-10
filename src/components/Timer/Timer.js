@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
-
-function formatTime(time) {
-  const seconds = String(time % 60).padStart(2, "0");
-  const minutes = String(Math.trunc(time / 60)).padStart(2, "0");
-  return `${minutes}:${seconds}`;
-}
+import React, { useCallback, useEffect, useState } from "react";
+import { formatTime } from "../../utils/time";
 
 const Timer = () => {
   const [time, setTime] = useState(0);
@@ -23,14 +18,15 @@ const Timer = () => {
     };
   }, [running]);
 
-  const onStartStop = () => {
-    setRunning(!running);
-  };
+  const onStartStop = useCallback(() => {
+    // setRunning(!running);
+    setRunning((oldValue) => !oldValue);
+  }, []);
 
-  function onReset() {
+  const onReset = useCallback(() => {
     setRunning(false);
     setTime(0);
-  }
+  }, []);
 
   return (
     <div>

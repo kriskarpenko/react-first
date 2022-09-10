@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const Clicker = () => {
   const [number, setNumber] = useState(0);
 
-  const onAdd = () => {
-    setNumber(number + 1);
-  };
+  const onAdd = useCallback(() => {
+    // setNumber(number + 1);
+    setNumber((oldValue) => oldValue + 1);
+  }, []);
 
-  const onReset = () => {
+  const onReset = useCallback(() => {
     setNumber(0);
-  };
+  }, []);
 
   return (
     <div>

@@ -9,26 +9,12 @@ import Clicker from "./components/Clicker/Clicker";
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <nav>
-          <div id="mobile-nav">
-            <a
-              className="App-link"
-              href="https://en.wikipedia.org/wiki/Vincent_van_Gogh"
-            >
-              VIncent Van Gogh
-            </a>
-          </div>
-        </nav>
-        <h2>Van Gogh's paintings</h2>
-      </header> */}
       <Nav />
       <Body className="App-Body"></Body>
       <Timer />
-      <CountDown />
+      <CountDown initialValue={3} />
       <Clicker />
       <Footer text="Kristina" />
-      {/* {Footer({ text: "Anton", second: 123, ...props })} */}
     </div>
   );
 }
