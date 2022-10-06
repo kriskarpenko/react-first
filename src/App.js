@@ -5,8 +5,17 @@ import Footer from "./Footer";
 import Timer from "./components/Timer/Timer";
 import CountDown from "./components/CountDown/CountDown";
 import Clicker from "./components/Clicker/Clicker";
+import ColoredButton from "./components/ColoredButton/ColoredButton";
+import React from "react";
+import KittyFacts from "./components/KittyFacts";
+import Dogs from "./components/Dogs";
 
 function App() {
+  const propsButtonToRender = {
+    // disabled: true,
+    initialColor: "yellow",
+    children: <div>text in div</div>,
+  };
   return (
     <div className="App">
       <Nav />
@@ -14,6 +23,11 @@ function App() {
       <Timer />
       <CountDown initialValue={3} />
       <Clicker />
+      <ColoredButton {...propsButtonToRender}></ColoredButton>
+      {/* {ColoredButton(propsButtonToRender)} */}
+
+      <KittyFacts />
+      <Dogs />
       <Footer text="Kristina" />
     </div>
   );
