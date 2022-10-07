@@ -7,7 +7,7 @@ import CountDown from "./components/CountDown/CountDown";
 import Clicker from "./components/Clicker/Clicker";
 import ColoredButton from "./components/ColoredButton/ColoredButton";
 import React from "react";
-import KittyFacts from "./components/KittyFacts";
+import { ListKittyFacts, SingleKittyFact } from "./components/KittyFacts";
 import Dogs from "./components/Dogs";
 
 function App() {
@@ -26,8 +26,9 @@ function App() {
       <ColoredButton {...propsButtonToRender}></ColoredButton>
       {/* {ColoredButton(propsButtonToRender)} */}
 
-      <KittyFacts />
+      <SingleKittyFact />
       <Dogs />
+      <ListKittyFacts />
       <Footer text="Kristina" />
     </div>
   );
