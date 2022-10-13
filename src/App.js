@@ -1,34 +1,22 @@
 import "./App.css";
 import Nav from "./components/Nav";
-import Body from "./Body";
 import Footer from "./Footer";
-import Timer from "./components/Timer/Timer";
-import CountDown from "./components/CountDown/CountDown";
-import Clicker from "./components/Clicker/Clicker";
-import ColoredButton from "./components/ColoredButton/ColoredButton";
-import React from "react";
-import { ListKittyFacts, SingleKittyFact } from "./components/KittyFacts";
-import Dogs from "./components/Dogs";
+import { useEffect, useState } from "react";
+import AppRoutes from "./AppRoutes";
 
 function App() {
-  const propsButtonToRender = {
-    // disabled: true,
-    initialColor: "yellow",
-    children: <div>text in div</div>,
-  };
+  const [page, setPage] = useState("/");
+
+  useEffect(() => {
+    let newPage = window.location.pathname;
+    setPage(newPage);
+    console.log(newPage);
+  }, []);
+
   return (
     <div className="App">
-      <Nav />
-      <Body className="App-Body"></Body>
-      <Timer />
-      <CountDown initialValue={3} />
-      <Clicker />
-      <ColoredButton {...propsButtonToRender}></ColoredButton>
-      {/* {ColoredButton(propsButtonToRender)} */}
-
-      <SingleKittyFact />
-      <Dogs />
-      <ListKittyFacts />
+      <Nav page={page} />
+      <AppRoutes page={page} />
       <Footer text="Kristina" />
     </div>
   );

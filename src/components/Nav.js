@@ -1,11 +1,16 @@
-import React from "react";
-import Avatar from "./Avatar";
-
-function Nav() {
+function Nav({ page = "/" }) {
   return (
     <nav className="navbar">
-      <div className="navbar-container">Navigation will be here...</div>
-      <Avatar />
+      <div className="navbar-container">
+        <ul>
+          <li>
+            <a href="/">Main</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
