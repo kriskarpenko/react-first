@@ -1,8 +1,6 @@
-import "./App.css";
-import Nav from "./components/Nav";
-import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import AppRoutes from "./AppRoutes";
+import Layout from "./components/Layout";
 
 function App() {
   const [page, setPage] = useState("/");
@@ -14,11 +12,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Nav page={page} />
+    <Layout>
       <AppRoutes page={page} />
-      <Footer text="Kristina" />
-    </div>
+    </Layout>
   );
 }
 
